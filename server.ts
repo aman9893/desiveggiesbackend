@@ -1,17 +1,17 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
-import authRouter from "./routes/authRoutes.js";
-import productRouter from "./routes/productRoutes.js";
-import uploadRouter from "./routes/uploadRoutes.js";
-import orderRouter from "./routes/orderRoutes.js";
-import categoryRouter from "./routes/categoryRoutes.js";
+import authRouter from "./routes/authRoutes";
+import productRouter from "./routes/productRoutes";
+import uploadRouter from "./routes/uploadRoutes";
+import orderRouter from "./routes/orderRoutes";
+import categoryRouter from "./routes/categoryRoutes";
 import { serve } from "inngest/express";
-import { inngest, functions } from "./inngest/index.js";
-import addressRouter from "./routes/addressRoutes.js";
-import adminRouter from "./routes/adminRoutes.js";
-import deliveryPartnerRouter from "./routes/deliveryPartnerRoutes.js";
-import { stripeWebhook } from "./controllers/webhooks.js";
+import { inngest, functions } from "./inngest/index";
+import addressRouter from "./routes/addressRoutes";
+import adminRouter from "./routes/adminRoutes";
+import deliveryPartnerRouter from "./routes/deliveryPartnerRoutes";
+import { stripeWebhook } from "./controllers/webhooks";
 
 const app = express();
 

@@ -1,7 +1,7 @@
 import express from "express";
-import auth from "../middleware/auth.js";
-import { createOrder, getAllOrders, getOrder, getOrderLocation, getUserOrders, updateOrderStatus } from "../controllers/orderController.js";
-import admin from "../middleware/admin.js";
+import auth from "../middleware/auth";
+import { createOrder, getAllOrders, getOrder, getOrderLocation, getUserOrders, updateOrderStatus } from "../controllers/orderController";
+import admin from "../middleware/admin";
 
 const orderRouter = express.Router();
 

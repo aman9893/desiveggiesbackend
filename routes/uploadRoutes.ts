@@ -1,7 +1,7 @@
 import express from "express";
-import auth from "../middleware/auth.js";
+import auth from "../middleware/auth";
 import multer from "multer";
-import cloudinary from "../config/cloudinary.js";
+import cloudinary from "../config/cloudinary";
 
 const uploadRouter = express.Router();
 

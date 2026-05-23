@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../config/prisma.js";
+import { prisma } from "../config/prisma";
 
 // Get all categories
 // GET /api/categories

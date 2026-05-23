@@ -1,7 +1,7 @@
 import express from "express";
-import auth from "../middleware/auth.js";
-import admin from "../middleware/admin.js";
-import { assignDeliveryPartner, createDeliveryPartner, getAdminStats, getDeliveryPartners, updateDeliveryPartner } from "../controllers/adminController.js";
+import auth from "../middleware/auth";
+import admin from "../middleware/admin";
+import { assignDeliveryPartner, createDeliveryPartner, getAdminStats, getDeliveryPartners, updateDeliveryPartner } from "../controllers/adminController";
 
 const adminRouter = express.Router();
 

@@ -1,4 +1,4 @@
-import { prisma } from "./config/prisma.js";
+import { prisma } from "./config/prisma";
 import fruits_vegetables from "./assets/fruits_vegetables.png";
 import dairy_eggs from "./assets/dairy_eggs.png";
 import bakery from "./assets/bakery.png";

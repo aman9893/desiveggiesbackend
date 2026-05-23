@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Stripe from "stripe";
-import { prisma } from "../config/prisma.js";
-import { inngest } from "../inngest/index.js";
+import { prisma } from "../config/prisma";
+import { inngest } from "../inngest/index";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;

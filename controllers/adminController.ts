@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../config/prisma.js";
+import { prisma } from "../config/prisma";
 import bcrypt from "bcrypt";
 
 // get admin dashboard data

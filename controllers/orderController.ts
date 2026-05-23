@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { prisma } from "../config/prisma.js";
-import { inngest } from "../inngest/index.js";
+import { prisma } from "../config/prisma";
+import { inngest } from "../inngest/index";
 import Stripe from "stripe";
 
 // Create order
