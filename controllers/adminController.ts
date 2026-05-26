@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { prisma } from "../config/prisma.js";
 import bcrypt from "bcrypt";
+import { notifyDriverAssigned } from "../services/notificationService.js";
 
 // get admin dashboard data
 export const getAdminStats = async (req: Request, res: Response) => {
@@ -73,6 +74,10 @@ export const assignDeliveryPartner = async (req: Request, res: Response) => {
 
     const order = await prisma.order.findUnique({
         where: { id: req.params.id as string },
+        include: {
+            user: { select: { name: true, email: true, phone: true } },
+            deliveryPartner: { select: { name: true, phone: true } },
+        },
     });
 
     const partner = await prisma.deliveryPartner.findUnique({
@@ -94,10 +99,17 @@ export const assignDeliveryPartner = async (req: Request, res: Response) => {
         });
     }
 
-    await prisma.order.update({
+    const updatedOrder = await prisma.order.update({
         where: { id: order!.id },
         data: { deliveryPartnerId: partner!.id, deliveryOtp: otp, status, statusHistory: history },
+        include: {
+            user: { select: { name: true, email: true, phone: true } },
+            deliveryPartner: { select: { name: true, phone: true } },
+        },
     });
 
-    res.json({ order });
+    // Emit driver assigned notification
+    notifyDriverAssigned(updatedOrder);
+
+    res.json({ order: updatedOrder });
 };

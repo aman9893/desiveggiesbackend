@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
+import { createServer } from "http";
 import authRouter from "./routes/authRoutes.js";
 import productRouter from "./routes/productRoutes.js";
 import uploadRouter from "./routes/uploadRoutes.js";
@@ -14,8 +15,13 @@ import deliveryPartnerRouter from "./routes/deliveryPartnerRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import searchRouter from "./routes/searchRoutes.js";
 import { stripeWebhook } from "./controllers/webhooks.js";
+import { initializeSocket } from "./services/notificationService.js";
 
 const app = express();
+const server = createServer(app);
+
+// Initialize Socket.io
+initializeSocket(server);
 
 app.post("/api/stripe", express.raw({ type: "application/json" }), stripeWebhook);
 
@@ -46,6 +52,6 @@ app.use((error: any, req: Request, res: Response, next: NextFunction) => {
     res.status(500).json({ message: error.message });
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
